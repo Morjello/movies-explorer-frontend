@@ -1,0 +1,111 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    min-width: 364px;
+    border-radius: 6px;
+    background-color: #FDFDFD;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card__image {
+    height: 203px;
+    max-width: 364px;
+    border-radius: 6px 6px 0 0;
+    background-image: url(../../images/movie-img.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.card__cell {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__container {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.card__title {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.card__duration {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13.31px;
+    color: #A0A0A0;
+}
+
+.card__like {
+    cursor: pointer;
+    background-image: url(../../images/card-like.svg);
+    background-repeat: no-repeat;
+    height: 15px;
+    width: 14px;
+    margin-top: 5px;
+}
+
+.card__like:hover {
+    opacity: 0.8;
+}
+
+.card__like_active {
+    background-image: url(../../images/like-active.svg);
+}
+
+.card__like_delete {
+    background-image: url(../../images/like-delete.svg);
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        min-width: 339px;
+    }
+    
+    .card__image {
+        height: 190px;
+        max-width: 339px;
+    }
+    
+    .card__cell {
+        padding: 14px;
+    }
+    
+    .card__container {
+        gap: 15px;
+    }
+
+    .card__like {
+        margin-right: 8px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .card {
+        min-width: 300px;
+    }
+    
+    .card__image {
+        height: 168px;
+        max-width: 300px;
+    }
+
+    .card__container {
+        gap: 14px;
+    }
+
+    .card__title {
+        font-size: 12px;
+        line-height: 14.52px;
+    }
+    
+    .card__like {
+        margin-top: 1px;
+        margin-right: 4px;
+    }
+}
