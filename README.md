@@ -1,3 +1,3 @@
 # movies-explorer-frontend
 
-Сылка на макет: https://disk.yandex.ru/d/MpBx5WEQDXH4WA
+Сылка на макет: https://disk.yandex.ru/d/YMSS7dAtH9DJXQ
