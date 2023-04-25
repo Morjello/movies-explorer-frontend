@@ -4,8 +4,8 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 export default function MoviesCardList() {
   const location = useLocation();
   return (
-    <section className="movies">
-      <ul className="movies__table">
+    <section className="movies-list">
+      <ul className="movies-list__table">
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
@@ -19,10 +19,10 @@ export default function MoviesCardList() {
         <MoviesCard></MoviesCard>
         <MoviesCard></MoviesCard>
       </ul>
-      <div className="movies__container">
+      <div className="movies-list__container">
         <button
-          className={`movies__button ${
-            location.pathname === "/saved-movies" ? "movies__button_none" : ""
+          className={`movies-list__button ${
+            location.pathname === "/saved-movies" ? "movies-list__button_none" : ""
           }`}
         >
           Ещё

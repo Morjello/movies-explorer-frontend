@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 export default function AuthForm({ name, id, title, children, text, link }) {
   const location = useLocation();
   return (
-    <section className="auth-form">
+    <div className="auth-form">
       <div className="auth-form__box">
         <div className="auth-form__icon"></div>
         <h3 className="auth-form__title">{title}</h3>
@@ -20,6 +20,6 @@ export default function AuthForm({ name, id, title, children, text, link }) {
           </div>
         </form>
       </div>
-    </section>
+    </div>
   );
 }

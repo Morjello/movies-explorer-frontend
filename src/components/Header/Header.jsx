@@ -6,7 +6,7 @@ export default function Header() {
   const location = useLocation();
 
   return (
-    <section
+    <header
       className={`header ${location.pathname !== "/" ? "header_main" : ""}`}
     >
       <Link to="/" className="header__logo"></Link>
@@ -33,6 +33,6 @@ export default function Header() {
           <Route path="/profile" element={<Navigation />} />
         </Routes>
       </div>
-    </section>
+    </header>
   );
 }

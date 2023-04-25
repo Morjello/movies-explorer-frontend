@@ -6,12 +6,12 @@ import Portfolio from "../Portfolio/Portfolio";
 
 export default function Main() {
   return (
-    <>
+    <main className="main">
       <Promo />
       <AboutProject />
       <Tech />
       <AboutMe />
       <Portfolio />
-    </>
+    </main>
   );
 }

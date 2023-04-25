@@ -4,10 +4,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
 export default function Movies() {
   return (
-    <>
-      <SearchForm></SearchForm>
-      <FilterCheckbox></FilterCheckbox>
-      <MoviesCardList></MoviesCardList>
-    </>
+    <section className="moveis">
+      <SearchForm />
+      <FilterCheckbox />
+      <MoviesCardList />
+    </section>
   );
 }
