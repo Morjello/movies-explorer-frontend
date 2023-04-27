@@ -21,7 +21,7 @@ export default function Login() {
           maxLength="40"
           required
         />
-        <span className="auth-form__input-error"></span>
+        <span className="auth-form__input_error"></span>
         <p className="auth-form__input-name">Пароль</p>
         <input
           type="password"
@@ -32,7 +32,7 @@ export default function Login() {
           maxLength="200"
           required
         />
-        <span className="auth-form__input-error"></span>
+        <span className="auth-form__input_error"></span>
       </div>
       <Link to="/movies" className="auth-form__button">
         Войти

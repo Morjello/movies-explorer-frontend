@@ -21,7 +21,7 @@ export default function Register() {
           maxLength="40"
           required
         />
-        <span className="auth-form__input-error"></span>
+        <span className="auth-form__input_error"></span>
         <p className="auth-form__input-name">E-mail</p>
         <input
           type="email"
@@ -32,7 +32,7 @@ export default function Register() {
           maxLength="40"
           required
         />
-        <span className="auth-form__input-error"></span>
+        <span className="auth-form__input_error"></span>
         <p className="auth-form__input-name">Пароль</p>
         <input
           type="password"
@@ -43,7 +43,7 @@ export default function Register() {
           maxLength="200"
           required
         />
-        <span className="auth-form__input-error"></span>
+        <span className="auth-form__input_error"></span>
       </div>
       <Link to="/signin" className="auth-form__button">
         Зарегистрироваться

@@ -52,7 +52,7 @@
     width: 270px;
     height: 327px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     border-radius: 10px;
 }
 
@@ -84,6 +84,13 @@
         height: 307px;
     }
 
+ }
+ @media screen and (max-width: 530px) {
+    .about-me__container {
+        flex-direction: column-reverse;
+        padding-top: 60px;
+        gap: 40px;
+    }
  }
  
  @media screen and (max-width: 320px) {
@@ -118,7 +125,6 @@
         width: 292px;
         height: 352px;
     }
-
  }
 
 

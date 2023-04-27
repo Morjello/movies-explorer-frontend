@@ -63,7 +63,7 @@
     outline: 1px solid#F3C1F8;
 }
 
-.auth-form__input-error {
+.auth-form__input_error {
     font-weight: 400;
     font-size: 10px;
     line-height: 12.1px;
@@ -72,7 +72,7 @@
     display: none;
 }
 
-.auth-form__input-error_active {
+.auth-form__input_error_active {
     display: block;
 }
 
