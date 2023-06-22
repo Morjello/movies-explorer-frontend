@@ -10,7 +10,6 @@
     background-repeat: no-repeat;
     width: 38px;
     height: 38px;
-
 }
 
 .auth-form__title {
@@ -63,19 +62,6 @@
     outline: 1px solid#F3C1F8;
 }
 
-.auth-form__input_error {
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12.1px;
-    color: #FF4062;
-    margin-top: 10px;
-    display: none;
-}
-
-.auth-form__input_error_active {
-    display: block;
-}
-
 .auth-form__button {
     display: flex;
     align-items: center;
@@ -90,7 +76,11 @@
     font-weight: 500;
     line-height: 17px;
     text-decoration: none;
+    margin-top: 10px;
+}
 
+.auth-form__button_disabled {
+    background-color: #FF4062;
 }
 
 .auth-form__button:hover {
