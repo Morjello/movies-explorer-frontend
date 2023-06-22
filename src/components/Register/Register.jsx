@@ -94,7 +94,7 @@ export default function Register({ handleRegisterUser }) {
           (!name.inputValid || !email.inputValid || !password.inputValid) &&
           "auth-form__button_disabled"
         }`}
-        disabled={!name.inputValid || !email.inputValid}
+        disabled={!name.inputValid || !email.inputValid || !password.inputValid}
       >
         Зарегистрироваться
       </button>

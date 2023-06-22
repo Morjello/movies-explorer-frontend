@@ -104,6 +104,6 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-  url: "http://localhost:3001/api",
+  url: "https://api.morjello.movies.nomoredomains.monster/api",
   headers: { "Content-Type": "application/json" },
 });

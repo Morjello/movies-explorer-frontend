@@ -100,7 +100,6 @@ function App() {
 
   const getUserData = async () => {
     try {
-      setIsFetching(true);
       const token = localStorage.getItem("token");
       if (token) {
         const userData = await mainApi.getUserData(token);
@@ -113,8 +112,6 @@ function App() {
     } catch (err) {
       setIsTooltipOpened(true);
       setTooltipMessage({ image: failImg, text: ERROR_UNKNOWN });
-    } finally {
-      setIsFetching(false);
     }
   };
 

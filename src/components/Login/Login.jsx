@@ -72,9 +72,10 @@ export default function Login({ handleLoginUser }) {
       <button
         to="/movies"
         className={`auth-form__button ${
-          !email.inputValid && "auth-form__button_disabled"
+          (!email.inputValid || !password.inputValid) &&
+          "auth-form__button_disabled"
         }`}
-        disabled={!email.inputValid}
+        disabled={!email.inputValid || !password.inputValid}
       >
         Войти
       </button>
