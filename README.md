@@ -7,3 +7,5 @@
 Ссылка на api: https://api.morjello.movies.nomoredomains.monster
 
 Публичный IP: 51.250.85.205
+
+Ссылка на пул реквест: https://github.com/Morjello/movies-explorer-frontend/pull/2
