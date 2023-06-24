@@ -20,6 +20,12 @@ import {
   ERROR_EMAIL_OR_PASS,
   ERROR_GET_MOVIES,
   ERROR_UNKNOWN,
+  MORE_MOVIES_ON_1279PX,
+  MORE_MOVIES_ON_1920PX,
+  MORE_MOVIES_ON_768PX,
+  MOVIES_ON_1279PX,
+  MOVIES_ON_1920PX,
+  MOVIES_ON_768PX,
   SUCCESS_LOGIN,
   SUCCESS_REGISTRATION,
 } from "../../utils/constants";
@@ -48,7 +54,6 @@ function App() {
   const [moreMovies, setMoreMovies] = useState(0); // количество карточек при клике "Еще"
   const [width, setWidth] = useState(window.innerWidth);
   const [savedMovies, setSavedMovies] = useState([]);
-  const [allSavedMovies, setAllSavedMovies] = useState([]);
 
   const handleResize = (e) => {
     setWidth(e.target.innerWidth);
@@ -63,18 +68,15 @@ function App() {
   }, [handleResize]);
 
   const getQuantityMovies = () => {
-    if (width <= 480) {
-      setQuantityMoviesOnPage(5);
-      setMoreMovies(1);
-    } else if (width <= 768) {
-      setQuantityMoviesOnPage(5);
-      setMoreMovies(2);
+    if (width <= 768) {
+      setQuantityMoviesOnPage(MOVIES_ON_768PX);
+      setMoreMovies(MORE_MOVIES_ON_768PX);
     } else if (width <= 1279) {
-      setQuantityMoviesOnPage(8);
-      setMoreMovies(2);
+      setQuantityMoviesOnPage(MOVIES_ON_1279PX);
+      setMoreMovies(MORE_MOVIES_ON_1279PX);
     } else {
-      setQuantityMoviesOnPage(12);
-      setMoreMovies(3);
+      setQuantityMoviesOnPage(MOVIES_ON_1920PX);
+      setMoreMovies(MORE_MOVIES_ON_1920PX);
     }
   };
 
@@ -82,11 +84,7 @@ function App() {
     try {
       setIsFetching(true);
       const savedMovies = await mainApi.getSavedMovie();
-      const modifiedSavedMovies = savedMovies.map((savedMovie) => {
-        return { ...savedMovie, id: savedMovie.movieId };
-      });
-      setSavedMovies(modifiedSavedMovies);
-      setAllSavedMovies(modifiedSavedMovies);
+      setSavedMovies(savedMovies);
     } catch (err) {
       setIsTooltipOpened(true);
       setTooltipMessage({
@@ -153,7 +151,6 @@ function App() {
         image: successImg,
         text: SUCCESS_REGISTRATION,
       });
-      navigate("/movies", { replace: true });
     } catch (err) {
       setIsTooltipOpened(true);
       if (err === 409) {
@@ -211,7 +208,6 @@ function App() {
                   setIsFetching={setIsFetching}
                   savedMovies={savedMovies}
                   setSavedMovies={setSavedMovies}
-                  allSavedMovies={allSavedMovies}
                 />
               </ProtectedRoute>
             }

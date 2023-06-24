@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import { moviesApi } from "../../utils/MoviesApi";
-import { mainApi } from "../../utils/MainApi";
 import failImg from "../../images/Fail.png";
+import { mainApi } from "../../utils/MainApi";
+import { moviesApi } from "../../utils/MoviesApi";
 import {
   ERROR_DELETE_MOVIE,
   ERROR_GET_MOVIES,
   ERROR_SAVE_MOVIE,
 } from "../../utils/constants";
 import filterMovies from "../../utils/filterMovies";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import SearchForm from "../SearchForm/SearchForm";
 
 export default function Movies({
   setIsTooltipOpened,
@@ -37,12 +37,14 @@ export default function Movies({
     // получение всех фильмов
     try {
       setIsFetching(true);
-      const movies = await moviesApi.getMovies();
+      if (!("allMovies" in localStorage)) {
+        const movies = await moviesApi.getMovies();
+        localStorage.setItem("allMovies", JSON.stringify(movies));
+        setMoviesInStorage(movies);
+      }
       const savedMovies = await mainApi.getSavedMovie();
       localStorage.setItem("movieQuery", JSON.stringify(movieQuery));
       localStorage.setItem("isShortMovie", JSON.stringify(isShortMovie));
-      localStorage.setItem("allMovies", JSON.stringify(movies));
-      setMoviesInStorage(movies);
       setMovieQueryInStorage(movieQuery);
       setShortMovieInStorage(isShortMovie);
       setSavedMovies(savedMovies);
@@ -56,6 +58,8 @@ export default function Movies({
       setIsFetching(false);
     }
   };
+
+  console.log(isShortMovieInStorage);
 
   useEffect(() => {
     if ("allMovies" in localStorage) {
@@ -88,7 +92,10 @@ export default function Movies({
     try {
       const likedMovie = await mainApi.saveMovie(movie);
       movie._id = likedMovie._id;
-      moviesInStorage.map((m) => m.id === likedMovie.movieId && likedMovie);
+      moviesInStorage.map(
+        (movieInStorage) =>
+          movieInStorage.id === likedMovie.movieId && likedMovie
+      );
       setSavedMovies([...savedMovies, { ...likedMovie, id: movie.id }]);
     } catch (err) {
       setIsTooltipOpened(true);
@@ -102,8 +109,12 @@ export default function Movies({
   const deleteMovie = async (movie) => {
     try {
       const deletedMovie = await mainApi.deleteMovie(movie._id);
-      setSavedMovies(savedMovies.filter((m) => m._id !== deletedMovie._id));
-      moviesInStorage.map((m) => (m.id === movie.movieId ? deletedMovie : m));
+      setSavedMovies(
+        savedMovies.filter((savedMovie) => savedMovie._id !== deletedMovie._id)
+      );
+      moviesInStorage.map((movieInStorage) =>
+        movieInStorage.id === movie.movieId ? deletedMovie : movieInStorage
+      );
     } catch (err) {
       setIsTooltipOpened(true);
       setTooltipMessage({
@@ -129,6 +140,7 @@ export default function Movies({
         getMovies={getMovies}
         movieQueryInStorage={movieQueryInStorage}
         isShortMovieInStorage={isShortMovieInStorage}
+        setShortMovieInStorage={setShortMovieInStorage}
       />
       <MoviesCardList
         savedMovies={savedMovies}

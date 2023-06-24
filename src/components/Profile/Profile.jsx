@@ -41,7 +41,7 @@ export default function Profile({
     // обновление данных пользователя
     try {
       setIsFetching(true);
-      const newUserData = await mainApi.updateUser(email, name);
+      const newUserData = await mainApi.updateUser({ email, name });
       setCurrentUser(newUserData);
       setIsTooltipOpened(true);
       setTooltipMessage({
@@ -91,8 +91,7 @@ export default function Profile({
     if (
       !name.inputValid ||
       !email.inputValid ||
-      name.value === currentUser.name ||
-      email.value === currentUser.email
+      name.value === currentUser.name
     )
       return true;
     return false;

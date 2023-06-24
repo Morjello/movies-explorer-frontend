@@ -16,6 +16,13 @@ const ERROR_DELETE_MOVIE = "Во время удаления произошла 
 const ERROR_SAVE_MOVIE = "Во время сохранения произошла ошибка";
 const ERROR_UPDATE_PROFILE = "При обновлении данных произошла ошибка";
 const ERROR_UNKNOWN = "Произошла ошибка";
+const MAX_DURATION_OF_SHORT_MOVIES = 40;
+const MOVIES_ON_1920PX = 12;
+const MOVIES_ON_1279PX = 8;
+const MOVIES_ON_768PX = 5;
+const MORE_MOVIES_ON_1920PX = 3;
+const MORE_MOVIES_ON_1279PX = 2;
+const MORE_MOVIES_ON_768PX = 1;
 
 export {
   REGEXP,
@@ -34,4 +41,11 @@ export {
   ERROR_DELETE_MOVIE,
   ERROR_SAVE_MOVIE,
   ERROR_UNKNOWN,
+  MAX_DURATION_OF_SHORT_MOVIES,
+  MOVIES_ON_1920PX,
+  MOVIES_ON_1279PX,
+  MOVIES_ON_768PX,
+  MORE_MOVIES_ON_1920PX,
+  MORE_MOVIES_ON_1279PX,
+  MORE_MOVIES_ON_768PX,
 };

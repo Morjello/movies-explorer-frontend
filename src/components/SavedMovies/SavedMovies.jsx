@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { mainApi } from "../../utils/MainApi";
@@ -11,16 +11,21 @@ export default function SavedMovies({
   setIsTooltipOpened,
   savedMovies,
   setSavedMovies,
-  allSavedMovies,
 }) {
+  const [filteredSavedMovies, setFilteredSavedMovies] = useState(null);
   const [isNothingFound, setNothingFound] = useState(false);
+  const modifiedSavedMovies = savedMovies.map((savedMovie) => {
+    return { ...savedMovie, id: savedMovie.movieId };
+  });
+
   const getMovies = (movieQuery, isShortMovie) => {
     const filteredSavedMovies = filterMovies(
-      allSavedMovies,
+      modifiedSavedMovies,
       movieQuery,
       isShortMovie
     );
-    setSavedMovies(filteredSavedMovies);
+
+    setFilteredSavedMovies(filteredSavedMovies);
     filteredSavedMovies.length === 0
       ? setNothingFound(true)
       : setNothingFound(false);
@@ -29,7 +34,16 @@ export default function SavedMovies({
   const deleteSavedMovie = async (movie) => {
     try {
       const deletedMovie = await mainApi.deleteMovie(movie._id);
-      setSavedMovies(savedMovies.filter((m) => m._id !== deletedMovie._id));
+      setSavedMovies(
+        savedMovies.filter((savedMovie) => savedMovie._id !== deletedMovie._id)
+      );
+      if (filteredSavedMovies !== null) {
+        setFilteredSavedMovies(
+          savedMovies.filter(
+            (savedMovie) => savedMovie._id !== deletedMovie._id
+          )
+        );
+      }
     } catch (err) {
       setIsTooltipOpened(true);
       setTooltipMessage({
@@ -38,13 +52,18 @@ export default function SavedMovies({
       });
     }
   };
+  const showSavedMovies = () => {
+    return filteredSavedMovies === null
+      ? modifiedSavedMovies
+      : filteredSavedMovies;
+  };
 
   return (
     <>
       <SearchForm getMovies={getMovies} />
       <MoviesCardList
-        showedMovies={savedMovies}
-        savedMovies={allSavedMovies}
+        showedMovies={showSavedMovies()}
+        savedMovies={savedMovies}
         deleteMovie={deleteSavedMovie}
         isNothingFound={isNothingFound}
       />

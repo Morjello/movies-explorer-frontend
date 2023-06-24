@@ -8,6 +8,7 @@ export default function SearchForm({
   getMovies,
   movieQueryInStorage,
   isShortMovieInStorage,
+  setShortMovieInStorage,
 }) {
   const [isShortMovie, setShortMovie] = useState(false);
   const searchQuery = useInput(movieQueryInStorage, { isEmpty: false });
@@ -35,7 +36,7 @@ export default function SearchForm({
           placeholder="Фильм"
           id="search"
           name="search"
-          value={searchQuery.value}
+          value={searchQuery.value || ""}
           onChange={(e) => searchQuery.onChange(e)}
           onBlur={(e) => searchQuery.onBlur(e)}
         />
@@ -50,6 +51,7 @@ export default function SearchForm({
       <FilterCheckbox
         isShortMovie={isShortMovie}
         setShortMovie={setShortMovie}
+        setShortMovieInStorage={setShortMovieInStorage}
       />
     </form>
   );

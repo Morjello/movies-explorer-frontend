@@ -1,5 +1,13 @@
-export default function FilterCheckbox({ isShortMovie, setShortMovie }) {
+import { useLocation } from "react-router-dom";
+
+export default function FilterCheckbox({
+  isShortMovie,
+  setShortMovie,
+  setShortMovieInStorage,
+}) {
+  const location = useLocation();
   const handleClickCheckbox = (e) => {
+    location.pathname === "/movies" && setShortMovieInStorage(e.target.checked);
     setShortMovie(e.target.checked);
   };
 

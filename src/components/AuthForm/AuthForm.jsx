@@ -13,7 +13,7 @@ export default function AuthForm({
   return (
     <div className="auth-form">
       <div className="auth-form__box">
-        <div className="auth-form__icon"></div>
+        <Link to={"/"} className="auth-form__logo" />
         <h3 className="auth-form__title">{title}</h3>
         <form
           action="auth"

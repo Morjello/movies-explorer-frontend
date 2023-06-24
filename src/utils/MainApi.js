@@ -49,14 +49,17 @@ class MainApi {
       .then((data) => data);
   }
 
-  updateUser(email, name) {
+  updateUser(userData) {
     return fetch(`${this.url}/users/me`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         authorization: `Bearer ${this.#getToken()}`,
       },
-      body: JSON.stringify({ email, name }),
+      body: JSON.stringify({
+        email: userData.email,
+        name: userData.name,
+      }),
     }).then((res) => this.#getDataJson(res));
   }
 
