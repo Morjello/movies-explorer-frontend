@@ -18,6 +18,13 @@
     padding: 50px 0 80px;
 }
 
+.movies-list__text {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
 .movies-list__button {
     cursor: pointer;
     width: 320px;

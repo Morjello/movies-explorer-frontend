@@ -33,7 +33,6 @@
     display: inline-block;
     padding-left: 48px;
     transition: .4s;
-    
 }
 
 .filter-chechbox__slider:before {
@@ -63,7 +62,7 @@
     transition: .4s;
   }
   
-  .filter-chechbox__input:checked + .filter-chechbox__slider::after {
+  .filter-chechbox__input_checked + .filter-chechbox__slider::after {
     background-color: #2BE080;
     transform: translateX(16px);
   }

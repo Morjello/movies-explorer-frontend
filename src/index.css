@@ -1,11 +1,9 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts/fonts/Inter.css);
-
 @import url(./components/App/App.css);
 @import url(./components/Header/Header.css);
 @import url(./components/Navigation/Navigation.css);
 @import url(./components/Menu/Menu.css);
-@import url(./components/Main/Main.css);
 @import url(./components/Promo/Promo.css);
 @import url(./components/AboutProject/AboutProject.css);
 @import url(./components/Tech/Tech.css);
@@ -20,5 +18,6 @@
 @import url(./components/Profile/Profile.css);
 @import url(./components/NotFoundPage/NotFoundPage.css);
 @import url(./components/Preloader/Preloader.css);
-
+@import url(./components/Tooltip/Tooltip.css);
+@import url(./components/Error/Error.css);
 @import url(./components/Footer/Footer.css);

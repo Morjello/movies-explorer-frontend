@@ -1,30 +1,67 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
-import preview from "../../images/movie-img.png";
 
-export default function MoviesCard() {
+export default function MoviesCard({
+  movie,
+  handleMovieLike,
+  deleteMovie,
+  savedMovies,
+}) {
   const location = useLocation();
-
-  const [like, setLike] = useState(false);
+  // console.log(savedMoviesInStorage);
+  const isLiked = savedMovies
+    ? savedMovies.some((m) => m.movieId === movie.id)
+    : false;
 
   const handleLikeClick = () => {
-    !like ? setLike(true) : setLike(false);
+    handleMovieLike(movie);
+  };
+
+  const handleDeleteMovie = () => {
+    deleteMovie(movie);
+  };
+
+  const countDuration = (movie) => {
+    const hours = Math.trunc(movie.duration / 60);
+    const minutes = movie.duration % 60;
+    return hours === 0 ? `${minutes}м` : `${hours}ч ${minutes}м`;
+  };
+
+  const handleMovieClick = () => {
+    window.location.href = movie.trailerLink;
   };
 
   return (
     <li className="card">
-      <img src={preview} alt="Превью" className="card__image"></img>
+      <img
+        src={
+          location.pathname === "/movies"
+            ? `https://api.nomoreparties.co/${movie.image.url}`
+            : movie.image
+        }
+        alt="Превью"
+        className="card__image"
+        target="_blank"
+        onClick={handleMovieClick}
+      ></img>
       <div className="card__cell">
         <div className="card__container">
-          <h3 className="card__title">33 слова о дизайне</h3>
-          <p className="card__duration">1ч 47м</p>
+          <h3 className="card__title">{movie.nameRU}</h3>
+          <p className="card__duration">{countDuration(movie)}</p>
         </div>
-        <button
-          onClick={handleLikeClick}
-          className={`card__like ${
-            location.pathname === "/saved-movies" ? "card__like_delete" : ""
-          } ${like ? "card__like_active" : ""}`}
-        ></button>
+        {location.pathname === "/movies" ? (
+          <button
+            type="button"
+            onClick={isLiked ? handleDeleteMovie : handleLikeClick}
+            className={`card__like ${isLiked && "card__like_active"}`}
+          ></button>
+        ) : (
+          <button
+            type="button"
+            onClick={handleDeleteMovie}
+            className="card__like card__like_delete"
+          ></button>
+        )}
       </div>
     </li>
   );

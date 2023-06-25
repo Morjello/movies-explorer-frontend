@@ -11,7 +11,7 @@ export default function Navigation() {
         <Link
           to="/movies"
           className={`navigation__link ${
-            location.pathname === "/movies" ? "navigation__link_active" : ""
+            location.pathname === "/movies" && "navigation__link_active"
           }`}
         >
           Фильмы
@@ -19,9 +19,7 @@ export default function Navigation() {
         <Link
           to="/saved-movies"
           className={`navigation__link ${
-            location.pathname === "/saved-movies"
-              ? "navigation__link_active"
-              : ""
+            location.pathname === "/saved-movies" && "navigation__link_active"
           }`}
         >
           Сохраненные фильмы
